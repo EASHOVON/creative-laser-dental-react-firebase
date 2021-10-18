@@ -1,0 +1,14 @@
+.slide_content {
+  text-align: left;
+  color: #0652dd;
+  font-weight: 300;
+  font-size: 60px;
+  position: absolute;
+  top: 20px;
+  left: 0;
+}
+
+.slide_content span {
+  color: #0652dd;
+  font-weight: 700;
+}

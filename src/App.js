@@ -1,10 +1,11 @@
 import './App.css';
+import Home from './components/Home/Home';
 
 function App()
 {
   return (
     <div className="App">
-      <img src="https://i.ibb.co/gt4Njdw/Colorful-Abstract-Fluid-Globe-Networking-Logo.png" alt="" />
+      <Home></Home>
     </div>
   );
 }

@@ -1,0 +1,27 @@
+.finance-banner {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: url(https://www.laserdentalbd.com/wp-content/uploads/2020/07/Untitled-design-66.jpg);
+  background-attachment: scroll;
+  min-width: 100%;
+  left: 0px;
+  width: 100%;
+  height: 100vh;
+}
+
+.finance-banner h1 {
+  position: absolute;
+  font-size: 80px;
+  line-height: 80px;
+  color: #fff !important;
+  text-shadow: 0px 0px 20px rgb(0 0 0 / 30%) !important;
+  font-family: "Conv_Microgramma D Extended Bold";
+  background: rgba(255, 255, 255, 0.4);
+  display: table;
+  padding: 0px 15px 15px;
+  margin-bottom: 4px;
+  top: 50%;
+  left: 5%;
+}

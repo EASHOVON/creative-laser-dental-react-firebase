@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 import './Services.css'
 
 const Services = () =>
@@ -43,16 +44,21 @@ const Services = () =>
     ]
     return (
         <div className="container">
-            <div className="row">
+            <div className="row my-5">
+                <h1 className="text-center">SERVICES</h1>
+                <h5 className="text-center">WE'RE CREATIVE CRAFTING WITH LOVE</h5>
                 {
                     servicesData.map(service => (
-                        <div key={service.id} className="col-md-4 card-content">
-                            <div className="img-body">
+                        <div key={service.id} className="col-md-3 card-body">
+                            <div>
                                 <img src={service.img} alt="" />
                             </div>
                             <div>
                                 <h5>{service.title}</h5>
                                 <p>{service.desc}</p>
+                            </div>
+                            <div>
+                                <Button varient="primary">Details</Button>
                             </div>
                         </div>
                     ))

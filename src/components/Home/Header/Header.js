@@ -1,5 +1,6 @@
 import React from 'react';
-import { Navbar, Container, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
+import { Navbar, Container, Nav } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 import './Header.css'
 
 const Header = () =>
@@ -15,12 +16,56 @@ const Header = () =>
 
                         </Nav>
                         <Nav>
-                            <Nav.Link href="#features">Home</Nav.Link>
-                            <Nav.Link href="#pricing">About</Nav.Link>
-                            <Nav.Link href="#features">Services</Nav.Link>
-                            <Nav.Link href="#pricing">Financing</Nav.Link>
-                            <Nav.Link href="#pricing">Register</Nav.Link>
-                            <Nav.Link href="#pricing">Login</Nav.Link>
+                            <NavLink
+                                className="link"
+                                to="/home"
+                                activeStyle={{
+                                    fontWeight: "bold",
+                                    color: "red"
+                                }}
+                            >
+                                HOME
+                            </NavLink>
+                            <NavLink
+                                className="link"
+                                to="/gallery"
+                                activeStyle={{
+                                    fontWeight: "bold",
+                                    color: "red"
+                                }}
+                            >
+                                GALLERY
+                            </NavLink>
+                            <NavLink
+                                className="link"
+                                to="/about"
+                                activeStyle={{
+                                    fontWeight: "bold",
+                                    color: "red"
+                                }}
+                            >
+                                ABOUT
+                            </NavLink>
+                            <NavLink
+                                className="link"
+                                to="/financing"
+                                activeStyle={{
+                                    fontWeight: "bold",
+                                    color: "red"
+                                }}
+                            >
+                                FINANCING
+                            </NavLink>
+                            <NavLink
+                                className="link"
+                                to="/login"
+                                activeStyle={{
+                                    fontWeight: "bold",
+                                    color: "red"
+                                }}
+                            >
+                                LOGIN/REGISTER
+                            </NavLink>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

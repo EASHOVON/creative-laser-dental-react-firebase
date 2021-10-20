@@ -1,10 +1,12 @@
 import React from 'react';
-import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Navbar, Container, Nav, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 import './Header.css'
 
 const Header = () =>
 {
+    const { user, LogOut } = useAuth()
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -56,16 +58,32 @@ const Header = () =>
                             >
                                 FINANCING
                             </NavLink>
-                            <NavLink
-                                className="link"
-                                to="/login"
-                                activeStyle={{
-                                    fontWeight: "bold",
-                                    color: "red"
-                                }}
-                            >
-                                LOGIN/REGISTER
-                            </NavLink>
+                            {
+                                user.displayName && <h5 className="text-white">{user?.displayName}</h5>
+                            }
+
+                            {
+                                user?.email ? <NavLink
+                                    className="link"
+                                    to="/login"
+                                    activeStyle={{
+                                        fontWeight: "bold",
+                                        color: "red"
+                                    }}
+                                >
+                                    <Button onClick={LogOut}>LOGOUT</Button>
+                                </NavLink> :
+                                    <NavLink
+                                        className="link"
+                                        to="/login"
+                                        activeStyle={{
+                                            fontWeight: "bold",
+                                            color: "red"
+                                        }}
+                                    >
+                                        LOGIN
+                                    </NavLink>
+                            }
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

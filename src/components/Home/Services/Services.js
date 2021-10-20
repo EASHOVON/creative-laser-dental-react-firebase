@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './Services.css'
 
 const Services = () =>
@@ -58,7 +59,7 @@ const Services = () =>
                                 <p>{service.desc}</p>
                             </div>
                             <div>
-                                <Button varient="primary">Details</Button>
+                                <Link to={`/services/${ service.id }`}><Button varient="primary">Details</Button></Link>
                             </div>
                         </div>
                     ))

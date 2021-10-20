@@ -15,16 +15,16 @@ const Services = () =>
                         <img src="https://www.laserdentalbd.com/wp-content/uploads/2020/05/Before-15.jpg" alt="" />
                     </div>
                     <div className="col-md-3 body">
-                        <img src="https://www.laserdentalbd.com/wp-content/uploads/2020/05/Before-15.jpg" alt="" />
+                        <img src="https://www.laserdentalbd.com/wp-content/uploads/2020/05/Before-16.jpg" alt="" />
                     </div>
                     <div className="col-md-3 body">
-                        <img src="https://www.laserdentalbd.com/wp-content/uploads/2020/05/Before-15.jpg" alt="" />
+                        <img src="https://www.laserdentalbd.com/wp-content/uploads/2020/05/Before-17.jpg" alt="" />
                     </div>
                     <div className="col-md-3 body">
-                        <img src="https://www.laserdentalbd.com/wp-content/uploads/2020/05/Before-15.jpg" alt="" />
+                        <img src="https://www.laserdentalbd.com/wp-content/uploads/2020/05/Before-18.jpg" alt="" />
                     </div>
                     <div className="col-md-3 body">
-                        <img src="https://www.laserdentalbd.com/wp-content/uploads/2020/05/Before-15.jpg" alt="" />
+                        <img src="https://www.laserdentalbd.com/wp-content/uploads/2020/05/Before-19.jpg" alt="" />
                     </div>
                 </div>
                 <div className="row my-3">

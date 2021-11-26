@@ -1,20 +1,20 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import './App.css';
-import About from './components/About/About';
-import Financing from './components/Financing/Financing';
-import Footer from './components/Home/Footer/Footer';
-import Header from './components/Home/Header/Header';
-import Home from './components/Home/Home';
-import Login from './components/Login/Login';
-import NotFound from './components/NotFound/NotFound';
-import Register from './components/Register/Register';
-import Gallery from './components/Gallery/Gallery';
-import ServiceDetails from './components/ServiceDetails/ServiceDetails';
-import AuthProvider from './components/Context/AuthProvider';
-import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./App.css";
+import About from "./components/About/About";
+import Financing from "./components/Financing/Financing";
+import Footer from "./components/Home/Footer/Footer";
+import Header from "./components/Home/Header/Header";
+import Home from "./components/Home/Home";
+import Login from "./components/Login/Login";
+import NotFound from "./components/NotFound/NotFound";
+import Register from "./components/Register/Register";
+import Gallery from "./components/Gallery/Gallery";
+import ServiceDetails from "./components/ServiceDetails/ServiceDetails";
 
-function App()
-{
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import AuthProvider from "./context/AuthProvider";
+
+function App() {
   return (
     <div className="App">
       <AuthProvider>

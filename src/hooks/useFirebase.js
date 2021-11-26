@@ -1,87 +1,101 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import initializeAuthentication from "../Firebase/Firebase.init";
-import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  signOut,
+  onAuthStateChanged,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 
 initializeAuthentication();
 
-const useFirebase = () =>
-{
-    const [user, setUser] = useState({});
-    const [error, setError] = useState('');
-    const [isLoding, setIsLoding] = useState(false);
-    const auth = getAuth();
-    const googleProvider = new GoogleAuthProvider();
-    const signInUsingGoogle = () =>
-    {
-        signInWithPopup(auth, googleProvider)
-            .then(result =>
-            {
-                setUser(result.user)
-            })
-    }
+const useFirebase = () => {
+  const [user, setUser] = useState({});
+  const [error, setError] = useState("");
+  const [isLoding, setIsLoding] = useState(true);
+  const auth = getAuth();
+  const googleProvider = new GoogleAuthProvider();
+  const signInUsingGoogle = () => {
+    setIsLoding(true);
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        setUser(result.user);
+      })
+      .catch((error) => {
+        setError(error.message);
+      })
+      .finally(() => setIsLoding(false));
+  };
 
-
-    const signUpWithEmail = (email, password) =>
-    {
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((result) =>
-            {
-                // Signed in 
-                const user = result.user;
-                setUser(user)
-                console.log(user);
-                // ...
-            })
-
-    }
-
-    const signInUserWithEmail = (email, password) =>
-    {
-        signInWithEmailAndPassword(auth, email, password)
-            .then((result) =>
-            {
-                // Signed in 
-                const user = result.user;
-                setUser(user)
-                // ...
-            })
-    }
-
-    const LogOut = () =>
-    {
-        signOut(auth).then(() =>
-        {
-            setUser({})
-        })
-            .finally(() => setIsLoding(false))
-    }
-
-
-
-    useEffect(() =>
-    {
-        onAuthStateChanged(auth, (user) =>
-        {
-            if (user)
-            {
-                setUser(user)
-            } else
-            {
-                setUser({})
-                setIsLoding(false)
-            }
+  const signUpWithEmail = (email, password, name) => {
+    setIsLoding(true);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        // Signed in
+        const newUser = { email, displayName: name };
+        setUser(newUser);
+        updateProfile(auth.currentUser, {
+          displayName: name,
         });
-    }, [])
+        // ...
+      })
+      .catch((error) => {
+        setError(error.message);
+      })
+      .finally(() => setIsLoding(false));
+  };
 
+  const signInUserWithEmail = (email, password, location, history) => {
+    setIsLoding(true);
+    signInWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        // Signed in
+        const destination = location?.state?.from || "/";
+        history.replace(destination);
+        // ...
+      })
+      .catch((error) => {
+        setError(error.message);
+      })
+      .finally(() => setIsLoding(false));
+  };
 
-    return {
-        signInUsingGoogle,
-        user,
-        error,
-        LogOut,
-        signUpWithEmail,
-        signInUserWithEmail
-    }
-}
+  const LogOut = () => {
+    setIsLoding(true);
+    signOut(auth)
+      .then(() => {
+        setUser({});
+      })
+      .catch((error) => {
+        setError(error.message);
+      })
+      .finally(() => setIsLoding(false));
+  };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+      } else {
+        setUser({});
+      }
+      setIsLoding(false);
+    });
+    return () => unsubscribe;
+  }, [auth]);
+
+  return {
+    signInUsingGoogle,
+    user,
+    error,
+    LogOut,
+    signUpWithEmail,
+    signInUserWithEmail,
+  };
+};
 
 export default useFirebase;
